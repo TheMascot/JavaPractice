@@ -26,19 +26,18 @@ public class DoWhilePracticeEmpty {
 //         ***LVL2***
 //
 //          Write a Java program that:
-//          Repeatedly asks the user to enter an integer.
-//          The program must use a do-while loop.
-//          The loop ends only when the user enters two numbers IN A ROW whose sum is divisible by 7.
-//          Zero and negative numbers are allowed.
-//          You may not use break, continue, arrays, or collections.
+//              Repeatedly asks the user to enter an integer.
+//              The program must use a do-while loop.
+//              The loop ends only when the user enters two numbers IN A ROW whose sum is divisible by 7.
+//              Zero and negative numbers are allowed.
+//              You may not use break, continue, arrays, or collections.
 //
 //          You may store only:
-//          the current and previous number
-//          counters / flags
+//              the current and previous number
+//              counters / flags
 //
 //          When the loop ends, print:
-//
-//          "Program finished after X inputs."
+//              "Program finished after X inputs."
 //          where X is the total number of numbers entered.
 
 
