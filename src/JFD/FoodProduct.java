@@ -12,7 +12,7 @@ public class FoodProduct {
     }
 
     public void setType(String type) {
-        if(type != ""){
+        if(!type.isEmpty()){
         this.string = type;
         }
     }

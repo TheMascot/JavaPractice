@@ -10,7 +10,7 @@ public class Organization {
     }
 
     public void setName(String name) {
-        if(name != ""){
+        if(!name.isEmpty()){
         this.name = name;
         }
     }

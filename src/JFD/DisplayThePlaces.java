@@ -10,7 +10,7 @@ public class DisplayThePlaces {
 
         Scanner disc = new Scanner(new File("src/JFD/Places.txt"));
         Scanner keyboard = new Scanner(System.in);
-        int userInputCost = 0;
+        int userInputCost;
         for (int place = 1; place <= 3; place++) {
             PlaceToLive currentPlace = displayAPlace(disc);
             System.out.println("How much is the cost of living here?");
