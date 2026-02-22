@@ -1,0 +1,9 @@
+Berlin, Main street, 77/B
+4
+120
+Paris, Extravagant street, 1
+2
+75
+Kistarcsa, Kalóz Jenő köz, 4/H
+3
+90
