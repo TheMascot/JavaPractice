@@ -27,7 +27,7 @@ public class Game {
                 displayBothPlayfields(playField, player1, player2);
                 if(checkForWinner(playField, player2)){
                 isGameOver = true;
-                };
+                }
             }
 
             changeCurrentPlayer(player1, player2);

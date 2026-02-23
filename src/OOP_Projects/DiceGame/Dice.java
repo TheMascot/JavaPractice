@@ -25,9 +25,9 @@ public class Dice {
         return currentValue;
     }
 
-    public Map<Integer, char[]> getDiceValueToArray() {
-        return diceValueToArray;
-    }
+//    public Map<Integer, char[]> getDiceValueToArray() {
+//        return diceValueToArray;
+//    }
 
     public void rollADice() {
         Random random = new Random();
