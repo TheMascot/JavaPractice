@@ -7,7 +7,9 @@ public class Game {
     private static final Scanner keyboard = new Scanner(System.in);
 
     public static void main(String[] args) {
+        welcomeMessage();
         GameSetup setup = initializer();
+
         PlayField playField = setup.getPlayField();
         Player player1 = setup.getPlayer1();
         Player player2 = setup.getPlayer2();
@@ -37,6 +39,23 @@ public class Game {
 
     }
 
+    private static void welcomeMessage(){
+        System.out.println("""
+                ***************************************************
+                * Hi! This is a two-player simulated board game   *
+                * designed to display everything in the terminal. *
+                * In every turn players can decide to roll a dice *
+                * for movement or to fill up the gas tank.        *
+                * If your tank runs empty, you can't move further *
+                * and your turn is skipped, so fill up before     *
+                * going dry!                                      *
+                * Input the players designators (two letters),    *
+                * the length of the required playfield and let    *
+                * the fun begin!                                  *
+                ***************************************************""");
+        System.out.println();
+    }
+
     private static GameSetup initializer() {
 
         Player p1 = new Player('▼');
@@ -48,7 +67,7 @@ public class Game {
         System.out.println("What are the initials of player two? (Two characters only)");
         p2.setTwoCharInitial(keyboard.nextLine());
 
-        System.out.println("How long should the field be?");
+        System.out.println("How long should the field be? (Min.: 20, max.: 100)");
         PlayField playField = new PlayField();
         playField.setFieldLength(keyboard.nextInt());
 
