@@ -18,17 +18,17 @@ public class Game {
         Dice dice = new Dice();
 
         while (!isGameOver) {
-            if (player1.isCurrentPlayer) {
+            if (player1.isCurrentPlayer()) {
                 playerTurn(playField, player1, dice);
                 displayBothPlayfields(playField, player1, player2);
-                if(checkForWinner(playField, player1)){
-                isGameOver = true;
+                if (checkForWinner(playField, player1)) {
+                    isGameOver = true;
                 }
             } else {
                 playerTurn(playField, player2, dice);
                 displayBothPlayfields(playField, player1, player2);
-                if(checkForWinner(playField, player2)){
-                isGameOver = true;
+                if (checkForWinner(playField, player2)) {
+                    isGameOver = true;
                 }
             }
 
@@ -39,7 +39,7 @@ public class Game {
 
     }
 
-    private static void welcomeMessage(){
+    private static void welcomeMessage() {
         System.out.println("""
                 ***************************************************
                 * Hi! This is a two-player simulated board game   *
@@ -71,8 +71,7 @@ public class Game {
         PlayField playField = new PlayField();
         playField.setFieldLength(keyboard.nextInt());
 
-        playField.displayPlayField(p1);
-        playField.displayPlayField(p2);
+        displayBothPlayfields(playField, p1, p2);
 
         return new GameSetup(playField, p1, p2);
     }
@@ -114,7 +113,7 @@ public class Game {
     }
 
     private static void changeCurrentPlayer(Player player1, Player player2) {
-        if (player1.isCurrentPlayer) {
+        if (player1.isCurrentPlayer()) {
             player1.setCurrentPlayer(false);
             player2.setCurrentPlayer(true);
         } else {
@@ -132,8 +131,7 @@ public class Game {
         if (player.getPosition() == playField.getFieldLength() - 1) {
             player.setWinner(true);
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     private static void gameOverMessage(Player player1, Player player2) {

@@ -4,10 +4,14 @@ public class Player {
 
     private String twoCharInitial = "??";
     private int position = 0;
-    private boolean isWinner = false;
-    private char symbol;
+    private final char symbol;
     private int gasInTank = 20;
-    boolean isCurrentPlayer = false;
+    private boolean isWinner = false;
+    private boolean isCurrentPlayer = false;
+
+    public Player(char symbol) {
+        this.symbol = symbol;
+    }
 
     public boolean isCurrentPlayer() {
         return isCurrentPlayer;
@@ -22,13 +26,12 @@ public class Player {
     }
 
     public void setGasInTank(int gasAdded) {
+        // gasAdded is negative when we use up gas
         if ((this.gasInTank + gasAdded) < 0) {
             this.gasInTank = 0;
         } else {
             this.gasInTank += gasAdded;
         }
-
-
     }
 
     public String getTwoCharInitial() {
@@ -36,16 +39,11 @@ public class Player {
     }
 
     public void setTwoCharInitial(String twoCharInitial) {
-
         if (twoCharInitial.length() > 2) {
             this.twoCharInitial = twoCharInitial.substring(0, 2);
         } else if (twoCharInitial.length() == 1) {
             this.twoCharInitial = "?" + twoCharInitial;
         } else this.twoCharInitial = twoCharInitial;
-    }
-
-    public Player(char symbol) {
-        this.symbol = symbol;
     }
 
     public int getPosition() {
@@ -65,10 +63,6 @@ public class Player {
 
     public char getSymbol() {
         return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
     }
 
     public boolean isWinner() {

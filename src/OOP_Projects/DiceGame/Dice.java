@@ -25,10 +25,6 @@ public class Dice {
         return currentValue;
     }
 
-//    public Map<Integer, char[]> getDiceValueToArray() {
-//        return diceValueToArray;
-//    }
-
     public void rollADice() {
         Random random = new Random();
         int r1 = random.nextInt(6) + 1;
@@ -53,8 +49,5 @@ public class Dice {
             }
         }
         System.out.println("◟--------◞");
-
-
-
     }
 }

@@ -3,7 +3,6 @@ package OOP_Projects.DiceGame;
 public class PlayField {
 
     private int fieldLength = 20;
-//    char[] fieldArray = new char[fieldLength];
 
     public int getFieldLength() {
         return fieldLength;
