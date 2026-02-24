@@ -124,13 +124,8 @@ public class Game {
     }
 
     private static void displayBothPlayfields(PlayField playField, Player player1, Player player2) {
-        if (player1.isCurrentPlayer) {
-            playField.displayPlayField(player1);
-            playField.displayPlayField(player2);
-        } else {
-            playField.displayPlayField(player1);
-            playField.displayPlayField(player2);
-        }
+        playField.displayPlayField(player1);
+        playField.displayPlayField(player2);
     }
 
     private static boolean checkForWinner(PlayField playField, Player player) {
