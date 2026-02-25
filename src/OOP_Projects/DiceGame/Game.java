@@ -36,6 +36,7 @@ public class Game {
 
         }
         gameOverMessage(player1, player2);
+        keyboard.close();
 
     }
 
