@@ -6,30 +6,21 @@ import java.util.Scanner;
 
 public class Main {
 
+    final static Scanner keyboard = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-       Board board = new Board();
+        Board board = new Board();
 
         boolean isWinner = false;
         boolean validInput = false;
         boolean playersTurn = true;
         int[] data;
 
-        Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("""
-                ***************************
-                *       TIC-TAC-TOE       *
-                ***************************
-                * Ön az X-el játszik,     *
-                * lépéseit a sor számának *
-                * és az oszlop betűjének  *
-                * megadásával teheti meg. *
-                * Például: 1a vagy 3b     *
-                * Jó játékot!             *
-                ***************************""");
+        Messages.displayWelcomeMessage();
 
-        board.boardDrawer(board);
+        board.boardDrawer(board.getBoard());
 
         while (!isWinner) {
 
@@ -52,21 +43,21 @@ public class Main {
             }
             while (playersTurn) {
 
-                if (board[rowData][colData] == 'X') {
+                if (board.getBoard()[rowData][colData] == 'X') {
                     System.out.println("Itt már van egy X.");
                     break;
-                } else if (board[rowData][colData] == 'O') {
+                } else if (board.getBoard()[rowData][colData] == 'O') {
                     System.out.println("Itt már van egy O");
                     break;
                 } else {
-                    board[rowData][colData] = 'X';
+                    board.getBoard()[rowData][colData] = 'X';
                     playersTurn = false;
-                    board.boardDrawer( board);
-                    if (winChecker(board).equals("X")) {
+                    board.boardDrawer(board.getBoard());
+                    if (winChecker(board.getBoard()).equals("X")) {
                         System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
                         isWinner = true;
                         break;
-                    } else if (!isBoardFull(board)) System.out.println("Az ellenfél lépése:");
+                    } else if (!isBoardFull(board.getBoard())) System.out.println("Az ellenfél lépése:");
                     else {
                         isWinner = true;
                         System.out.println("A játék döntetlen lett.");
@@ -74,9 +65,9 @@ public class Main {
                 }
             }
             while (!playersTurn && !isWinner) {
-                if (isBoardFull(board)) break;
+                if (isBoardFull(board.getBoard())) break;
                 board.boardDrawer(opponentsMove(board));
-                if (winChecker(board).equals("O")) {
+                if (winChecker(board.getBoard()).equals("O1a")) {
                     isWinner = true;
                     System.out.println("Ezt a játszmát a számítógép nyerte.");
                     break;
@@ -139,7 +130,7 @@ public class Main {
 
     }
 
-    private static char[][] opponentsMove(char[][] board) {
+    private static char[][] opponentsMove(Board board) {
 
         boolean validSpot = false;
         Random r = new Random();
@@ -148,12 +139,12 @@ public class Main {
             int randomRow = r.nextInt(3);
             int randomCol = r.nextInt(3);
 
-            if (board[randomRow][randomCol] == ' ') {
-                board[randomRow][randomCol] = 'O';
+            if (board.getBoard()[randomRow][randomCol] == ' ') {
+                board.getBoard()[randomRow][randomCol] = 'O';
                 validSpot = true;
             }
         }
-        return board;
+        return board.getBoard();
     }
 
     private static String winChecker(char[][] board) {

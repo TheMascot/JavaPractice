@@ -12,13 +12,22 @@ public class Board {
         initializeBoard();
     }
 
+    public char[][] getBoard() {
+//        char[][] copy = new char[SIZE][SIZE];
+//        for (int i = 0; i < SIZE; i++) {
+//            copy[i] = board[i].clone();
+//        }
+//        return copy;
+        return this.board;
+    }
+
     private void initializeBoard() {
         for (int i = 0; i < SIZE; i++) {
             Arrays.fill(board[i], ' ');
         }
     }
 
-    public void boardDrawer(Board board) {
+    public void boardDrawer(char[][] board) {
         StringBuilder currentBoard = new StringBuilder();
         currentBoard.append("  A B C \n");
 
