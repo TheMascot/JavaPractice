@@ -4,14 +4,11 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class PlayableTicTacToe {
+public class Main {
 
     public static void main(String[] args) {
 
-        char[][] board = new char[3][3];
-        Arrays.fill(board[0], ' ');
-        Arrays.fill(board[1], ' ');
-        Arrays.fill(board[2], ' ');
+       Board board = new Board();
 
         boolean isWinner = false;
         boolean validInput = false;
@@ -32,7 +29,7 @@ public class PlayableTicTacToe {
                 * Jó játékot!             *
                 ***************************""");
 
-        boardDrawer(board);
+        board.boardDrawer(board);
 
         while (!isWinner) {
 
@@ -64,7 +61,7 @@ public class PlayableTicTacToe {
                 } else {
                     board[rowData][colData] = 'X';
                     playersTurn = false;
-                    boardDrawer(board);
+                    board.boardDrawer( board);
                     if (winChecker(board).equals("X")) {
                         System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
                         isWinner = true;
@@ -78,7 +75,7 @@ public class PlayableTicTacToe {
             }
             while (!playersTurn && !isWinner) {
                 if (isBoardFull(board)) break;
-                boardDrawer(opponentsMove(board));
+                board.boardDrawer(opponentsMove(board));
                 if (winChecker(board).equals("O")) {
                     isWinner = true;
                     System.out.println("Ezt a játszmát a számítógép nyerte.");
@@ -92,19 +89,19 @@ public class PlayableTicTacToe {
 
     }
 
-    private static void boardDrawer(char[][] board) {
-
-        StringBuilder currentBoard = new StringBuilder();
-        currentBoard.append("  A B C \n");
-        for (int i = 0; i < board.length; i++) {
-            currentBoard.append(i + 1).append("|");
-            for (int j = 0; j < board[i].length; j++) {
-                currentBoard.append(board[i][j]).append("|");
-                if (j == 2) currentBoard.append("\n");
-            }
-        }
-        System.out.println(currentBoard);
-    }
+//    private static void boardDrawer(char[][] board) {
+//
+//        StringBuilder currentBoard = new StringBuilder();
+//        currentBoard.append("  A B C \n");
+//        for (int i = 0; i < board.length; i++) {
+//            currentBoard.append(i + 1).append("|");
+//            for (int j = 0; j < board[i].length; j++) {
+//                currentBoard.append(board[i][j]).append("|");
+//                if (j == 2) currentBoard.append("\n");
+//            }
+//        }
+//        System.out.println(currentBoard);
+//    }
 
     private static int[] inputValidator(String rawInput) {
         String validRow = "123";
