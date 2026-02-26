@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Board board = new Board();
+        Player p1 = new Player('b');
 
         boolean isWinner = false;
         boolean validInput = false;
@@ -53,11 +54,11 @@ public class Main {
                     board.getBoard()[rowData][colData] = 'X';
                     playersTurn = false;
                     board.boardDrawer(board.getBoard());
-                    if (winChecker(board.getBoard()).equals("X")) {
+                    if (board.winChecker(board.getBoard()).equals("X")) {
                         System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
                         isWinner = true;
                         break;
-                    } else if (!isBoardFull(board.getBoard())) System.out.println("Az ellenfél lépése:");
+                    } else if (!board.isBoardFull()) System.out.println("Az ellenfél lépése:");
                     else {
                         isWinner = true;
                         System.out.println("A játék döntetlen lett.");
@@ -65,9 +66,9 @@ public class Main {
                 }
             }
             while (!playersTurn && !isWinner) {
-                if (isBoardFull(board.getBoard())) break;
+                if (board.isBoardFull()) break;
                 board.boardDrawer(opponentsMove(board));
-                if (winChecker(board.getBoard()).equals("O1a")) {
+                if (board.winChecker(board.getBoard()).equals("O1a")) {
                     isWinner = true;
                     System.out.println("Ezt a játszmát a számítógép nyerte.");
                     break;
@@ -79,20 +80,6 @@ public class Main {
         System.out.println("Köszönöm a játékot!");
 
     }
-
-//    private static void boardDrawer(char[][] board) {
-//
-//        StringBuilder currentBoard = new StringBuilder();
-//        currentBoard.append("  A B C \n");
-//        for (int i = 0; i < board.length; i++) {
-//            currentBoard.append(i + 1).append("|");
-//            for (int j = 0; j < board[i].length; j++) {
-//                currentBoard.append(board[i][j]).append("|");
-//                if (j == 2) currentBoard.append("\n");
-//            }
-//        }
-//        System.out.println(currentBoard);
-//    }
 
     private static int[] inputValidator(String rawInput) {
         String validRow = "123";
@@ -147,58 +134,6 @@ public class Main {
         return board.getBoard();
     }
 
-    private static String winChecker(char[][] board) {
 
-        int winCondition = 3;
-        int rowCounter;
-        int colCounter;
-        int leftDiagonalCounter = 0;
-        int rightDiagonalCounter = 0;
-        boolean isWinner = false;
-        String returnValue = "";
-
-        for (int i = 0; i < board.length; i++) {
-            rowCounter = 0;
-            colCounter = 0;
-
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == 'X') rowCounter++;
-                else if (board[i][j] == 'O') rowCounter--;
-
-                if (board[j][i] == 'X') colCounter++;
-                else if (board[j][i] == 'O') colCounter--;
-
-                if (i == j) {
-                    if (board[i][j] == 'X') leftDiagonalCounter++;
-                    else if (board[i][j] == 'O') leftDiagonalCounter--;
-                }
-                if (i + j == 2) {
-                    if (board[i][j] == 'X') rightDiagonalCounter++;
-                    else if (board[i][j] == 'O') rightDiagonalCounter--;
-                }
-            }
-            if (rowCounter == winCondition || colCounter == winCondition ||
-                    leftDiagonalCounter == winCondition || rightDiagonalCounter == winCondition) {
-                returnValue = "X";
-                isWinner = true;
-            }
-            if (rowCounter == -winCondition || colCounter == -winCondition ||
-                    leftDiagonalCounter == -winCondition || rightDiagonalCounter == -winCondition) {
-                returnValue = "O";
-                isWinner = true;
-            }
-            if (i == 2 && !isWinner) returnValue = "";
-        }
-        return returnValue;
-    }
-
-    private static boolean isBoardFull(char[][] board) {
-        for (char[] chars : board) {
-            for (char aChar : chars) {
-                if (aChar == ' ') return false;
-            }
-        }
-        return true;
-    }
 
 }
