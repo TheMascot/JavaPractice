@@ -1,14 +1,10 @@
 package OOP_Projects.Playable_Tic_Tac_Toe;
 
-import java.util.Arrays;
-
 public class InputHandler {
 
     private final String rawInput;
     private int rowData = 0;
     private int colData = 0;
-//    boolean validInput = false;
-//    int[] data;
 
     public InputHandler(String userInput) {
         this.rawInput = userInput.trim().replaceAll(" ", "");
@@ -22,18 +18,11 @@ public class InputHandler {
         return colData;
     }
 
-//    public void setRawInputandRowColData() {
-//        if(checkRawInput()){
-//            this.rawInput = rawInput;
-//            transformInput(rawInput);
-//        }
-//    }
-
     public boolean checkRawInput(){
         String validRow = "123";
         String validCol = "abc";
         String[] temp = this.rawInput.split("");
-        System.out.println(Arrays.toString(temp));
+
         if(validRow.contains(temp[0]) && validCol.contains(temp[1])){
             transformInput(this.rawInput);
             return true;
