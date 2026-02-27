@@ -3,7 +3,7 @@ package OOP_Projects.Playable_Tic_Tac_Toe;
 public class Player {
 
     char playersSign;
-    boolean playersTurn = false;
+    boolean playersTurn;
 
     public Player(char sign){
         setPlayersSign(sign);

@@ -31,10 +31,10 @@ public class Board {
         StringBuilder currentBoard = new StringBuilder();
         currentBoard.append("  A B C \n");
 
-        for (int i = 0; i < this.board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             currentBoard.append(i + 1).append("|");
-            for (int j = 0; j < this.board[i].length; j++) {
-                currentBoard.append(this.board[i][j]).append("|");
+            for (int j = 0; j < board[i].length; j++) {
+                currentBoard.append(board[i][j]).append("|");
                 if (j == 2) currentBoard.append("\n");
             }
         }

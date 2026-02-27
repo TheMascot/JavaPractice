@@ -1,4 +1,52 @@
 package OOP_Projects.Playable_Tic_Tac_Toe;
 
+import java.util.Random;
+
 public class Opponent {
+
+    char opponentSign;
+    boolean opponentTurn;
+
+    public Opponent(Player player) {
+        setOpponentSign(player.getPlayersSign());
+        setOpponentTurn(player.getPlayersSign());
+    }
+
+    public char getOpponentSign() {
+        return opponentSign;
+    }
+
+    public void setOpponentSign(char playerSign) {
+        if (playerSign == 'X') this.opponentSign = 'O';
+        else if(playerSign == 'O') this.opponentSign = 'X';
+    }
+
+    public boolean isOpponentTurn() {
+        return opponentTurn;
+    }
+
+    public void toggleOpponentTurn() {
+        this.opponentTurn = !this.opponentTurn;
+    }
+
+    private void setOpponentTurn(char playerSign) {
+        if (playerSign == 'X') this.opponentTurn = false;
+        else if (playerSign == 'O') this.opponentTurn = true;
+    }
+    public char[][] opponentsMove(Board board) {
+
+        boolean validSpot = false;
+        Random r = new Random();
+
+        while (!validSpot) {
+            int randomRow = r.nextInt(3);
+            int randomCol = r.nextInt(3);
+
+            if (board.getBoard()[randomRow][randomCol] == ' ') {
+                board.getBoard()[randomRow][randomCol] = 'O';
+                validSpot = true;
+            }
+        }
+        return board.getBoard();
+    }
 }

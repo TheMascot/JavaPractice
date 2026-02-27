@@ -11,13 +11,12 @@ public class Main {
     public static void main(String[] args) {
 
         Board board = new Board();
-        Player p1 = new Player('b');
+        Player player = new Player('X');
+        Opponent opponent = new Opponent(player);
 
         boolean isWinner = false;
         boolean validInput = false;
-        boolean playersTurn = true;
         int[] data;
-
 
         Messages.displayWelcomeMessage();
 
@@ -42,7 +41,7 @@ public class Main {
                     colData = data[1];
                 }
             }
-            while (playersTurn) {
+            while (player.isPlayersTurn()) {
 
                 if (board.getBoard()[rowData][colData] == 'X') {
                     System.out.println("Itt már van egy X.");
@@ -52,7 +51,7 @@ public class Main {
                     break;
                 } else {
                     board.getBoard()[rowData][colData] = 'X';
-                    playersTurn = false;
+                    toggleBothPlayersTurn(player, opponent);
                     board.boardDrawer(board.getBoard());
                     if (board.winChecker(board.getBoard()).equals("X")) {
                         System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
@@ -65,15 +64,15 @@ public class Main {
                     }
                 }
             }
-            while (!playersTurn && !isWinner) {
+            while (opponent.isOpponentTurn() && !isWinner) {
                 if (board.isBoardFull()) break;
-                board.boardDrawer(opponentsMove(board));
-                if (board.winChecker(board.getBoard()).equals("O1a")) {
+                board.boardDrawer(opponent.opponentsMove(board));
+                if (board.winChecker(board.getBoard()).equals("O")) {
                     isWinner = true;
                     System.out.println("Ezt a játszmát a számítógép nyerte.");
                     break;
                 }
-                playersTurn = true;
+                toggleBothPlayersTurn(player, opponent);
             }
             validInput = false;
         }
@@ -116,24 +115,8 @@ public class Main {
         return new int[]{rowIndex, colIndex};
 
     }
-
-    private static char[][] opponentsMove(Board board) {
-
-        boolean validSpot = false;
-        Random r = new Random();
-
-        while (!validSpot) {
-            int randomRow = r.nextInt(3);
-            int randomCol = r.nextInt(3);
-
-            if (board.getBoard()[randomRow][randomCol] == ' ') {
-                board.getBoard()[randomRow][randomCol] = 'O';
-                validSpot = true;
-            }
-        }
-        return board.getBoard();
+    private static void toggleBothPlayersTurn(Player player, Opponent opponent){
+        player.togglePlayersTurn();
+        opponent.toggleOpponentTurn();
     }
-
-
-
-}
+    }
