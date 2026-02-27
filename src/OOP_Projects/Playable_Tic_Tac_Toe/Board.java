@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Board {
 
-    private int SIZE = 3;
+    private final int SIZE = 3;
     private char[][] board;
 
     public Board() {
@@ -12,13 +12,21 @@ public class Board {
         initializeBoard();
     }
 
-    public char[][] getBoard() {
-//        char[][] copy = new char[SIZE][SIZE];
-//        for (int i = 0; i < SIZE; i++) {
-//            copy[i] = board[i].clone();
-//        }
-//        return copy;
-        return this.board;
+    public char[][] getFullBoard() {
+        char[][] copy = new char[SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            copy[i] = board[i].clone();
+        }
+        return copy;
+//        return this.board;
+    }
+
+    public char getOneBoardField(int row, int col){
+        char temp = getFullBoard()[row][col];
+        return temp;
+    }
+    public void setOneBoardField(int row, int col, Player player, Opponent opponent){
+       this.board[row][col] = player.isPlayersTurn() ? player.getPlayersSign() : opponent.getOpponentSign();
     }
 
     private void initializeBoard() {
@@ -31,10 +39,10 @@ public class Board {
         StringBuilder currentBoard = new StringBuilder();
         currentBoard.append("  A B C \n");
 
-        for (int i = 0; i < this.board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             currentBoard.append(i + 1).append("|");
-            for (int j = 0; j < this.board[i].length; j++) {
-                currentBoard.append(this.board[i][j]).append("|");
+            for (int j = 0; j < board[i].length; j++) {
+                currentBoard.append(board[i][j]).append("|");
                 if (j == 2) currentBoard.append("\n");
             }
         }
