@@ -11,7 +11,6 @@ public class Main {
         Board board = new Board();
         Player player = new Player('X');
         Opponent opponent = new Opponent(player);
-
         boolean isAWinner = false;
 
         Messages.displayWelcomeMessage();
