@@ -28,7 +28,7 @@ public class InputHandler {
             return true;
         }
         else{
-            Messages.displayIncorrectInputMessage();
+            Messages.displayIncorrectInputErrorMessage();
             return false;
         }
     }

@@ -29,6 +29,11 @@ public class Board {
        this.board[row][col] = player.isPlayersTurn() ? player.getPlayersSign() : opponent.getOpponentSign();
     }
 
+    public boolean isThisFieldPopulated(int row, int col) {
+        if(getOneBoardField(row, col) != ' ') return true;
+        else return false;
+    }
+
     private void initializeBoard() {
         for (int i = 0; i < SIZE; i++) {
             Arrays.fill(board[i], ' ');

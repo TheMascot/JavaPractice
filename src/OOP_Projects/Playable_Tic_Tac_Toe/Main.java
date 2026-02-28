@@ -27,13 +27,10 @@ public class Main {
 
             while (player.isPlayersTurn()) {
 
-                if (board.getOneBoardField(inputHandler.getRowData(), inputHandler.getColData()) == 'X') {
-                    System.out.println("Itt már van egy X.");
+                if (board.isThisFieldPopulated(inputHandler.getRowData(), inputHandler.getColData())) {
+                    Messages.displayPopulatedFieldErrorMessage();
                     break;
-                } else if (board.getOneBoardField(inputHandler.getRowData(), inputHandler.getColData()) == 'O') {
-                    System.out.println("Itt már van egy O");
-                    break;
-                } else {
+                }  else {
                     board.setOneBoardField(inputHandler.getRowData(), inputHandler.getColData(), player, opponent);
                     toggleBothPlayersTurn(player, opponent);
                     board.boardDrawer(board.getFullBoard());

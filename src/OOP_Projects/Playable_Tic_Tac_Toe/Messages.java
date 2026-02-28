@@ -17,11 +17,15 @@ public class Messages {
     }
 
     public static void displayWhereToPlaceNextPlayerSign(Player player) {
-        System.out.println("Hová kerüljön a következő " + player.getPlayersSign());
+        System.out.println("Hová kerüljön a következő " + player.getPlayersSign() + "?");
     }
 
-    public static void displayIncorrectInputMessage() {
+    public static void displayIncorrectInputErrorMessage() {
         System.out.println("Nem megfelelő input. A sor számát és az oszlop betűjét adja meg.");
+    }
+
+    public static void  displayPopulatedFieldErrorMessage(){
+        System.out.println("Ez a mező már foglalt.");
     }
 
 }
