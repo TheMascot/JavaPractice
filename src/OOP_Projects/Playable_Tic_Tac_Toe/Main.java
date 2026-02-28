@@ -12,58 +12,67 @@ public class Main {
         Player player = new Player('X');
         Opponent opponent = new Opponent(player);
 
-        boolean isWinner = false;
+        boolean isAWinner = false;
 
         Messages.displayWelcomeMessage();
 
         board.boardDrawer(board.getFullBoard());
 
-        while (!isWinner) {
+        while (!isAWinner) {
 
             Messages.displayWhereToPlaceNextPlayerSign(player);
 
             InputHandler inputHandler = new InputHandler(keyboard.nextLine().toLowerCase());
-            if(!inputHandler.checkRawInput()) continue;
+            if (!inputHandler.checkRawInput()) continue;
 
             while (player.isPlayersTurn()) {
 
                 if (board.isThisFieldPopulated(inputHandler.getRowData(), inputHandler.getColData())) {
                     Messages.displayPopulatedFieldErrorMessage();
                     break;
-                }  else {
+                } else {
                     board.setOneBoardField(inputHandler.getRowData(), inputHandler.getColData(), player, opponent);
                     toggleBothPlayersTurn(player, opponent);
                     board.boardDrawer(board.getFullBoard());
 
-                    if (board.winChecker(board.getFullBoard()).equals("X")) {
-                        System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
-                        isWinner = true;
-                        break;
-                    } else if (!board.isBoardFull()) System.out.println("Az ellenfél lépése:");
-                    else {
-                        isWinner = true;
-                        System.out.println("A játék döntetlen lett.");
-                    }
+                    isAWinner = checkWhatPhaseComesNextAfterPlayersMove(board, player);
                 }
             }
-            while (opponent.isOpponentTurn() && !isWinner) {
+            while (opponent.isOpponentTurn() && !isAWinner) {
                 if (board.isBoardFull()) break;
                 board.boardDrawer(opponent.opponentsMove(board, player, opponent));
-                if (board.winChecker(board.getFullBoard()).equals("O")) {
-                    isWinner = true;
-                    System.out.println("Ezt a játszmát a számítógép nyerte.");
-                    break;
-                }
+                isAWinner = checkIfOpponentsWon(board, opponent);
                 toggleBothPlayersTurn(player, opponent);
             }
 
         }
-        System.out.println("Köszönöm a játékot!");
+        Messages.displayLastMessage();
         keyboard.close();
     }
 
     private static void toggleBothPlayersTurn(Player player, Opponent opponent) {
         player.togglePlayersTurn();
         opponent.toggleOpponentTurn();
+    }
+
+    private static boolean checkWhatPhaseComesNextAfterPlayersMove(Board board, Player player) {
+        if (board.winChecker(board.getFullBoard()) == player.getPlayersSign()) {
+            Messages.displayPlayerWon();
+            return true;
+        } else if (!board.isBoardFull()) {
+            Messages.displayOpponentsMoveText();
+            return false;
+        } else {
+            Messages.displayGameEndsWithTie();
+            return true;
+        }
+    }
+
+    private static boolean checkIfOpponentsWon(Board board, Opponent opponent) {
+        if (board.winChecker(board.getFullBoard()) == opponent.getOpponentSign()) {
+            Messages.displayOpponentWon();
+            return true;
+        }
+        else return false;
     }
 }

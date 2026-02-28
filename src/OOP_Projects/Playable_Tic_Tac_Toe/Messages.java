@@ -28,4 +28,23 @@ public class Messages {
         System.out.println("Ez a mező már foglalt.");
     }
 
+    public  static void displayPlayerWon(){
+        System.out.println("Gratulálok! Ezt a játékot Ön nyerte!");
+    }
+    public  static void displayOpponentWon(){
+        System.out.println("Ezt a játszmát a számítógép nyerte.");
+    }
+
+    public static void displayGameEndsWithTie(){
+        System.out.println("A játék döntetlen lett.");
+    }
+
+    public  static void displayOpponentsMoveText(){
+        System.out.println("Az ellenfél lépése:");
+    }
+
+    public static void displayLastMessage(){
+        System.out.println("Köszönöm a játékot!");
+    }
+
 }

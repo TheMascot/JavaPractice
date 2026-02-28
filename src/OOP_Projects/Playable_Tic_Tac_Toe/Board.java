@@ -54,7 +54,7 @@ public class Board {
         System.out.println(currentBoard);
     }
 
-    public String winChecker(char[][] board) {
+    public char winChecker(char[][] board) {
 
         int winCondition = SIZE;
         int rowCounter;
@@ -62,7 +62,7 @@ public class Board {
         int leftDiagonalCounter = 0;
         int rightDiagonalCounter = 0;
         boolean isWinner = false;
-        String returnValue = "";
+        char returnValue = ' ';
 
         for (int i = 0; i < board.length; i++) {
             rowCounter = 0;
@@ -86,15 +86,15 @@ public class Board {
             }
             if (rowCounter == winCondition || colCounter == winCondition ||
                     leftDiagonalCounter == winCondition || rightDiagonalCounter == winCondition) {
-                returnValue = "X";
+                returnValue = 'X';
                 isWinner = true;
             }
             if (rowCounter == -winCondition || colCounter == -winCondition ||
                     leftDiagonalCounter == -winCondition || rightDiagonalCounter == -winCondition) {
-                returnValue = "O";
+                returnValue = 'O';
                 isWinner = true;
             }
-            if (i == 2 && !isWinner) returnValue = "";
+            if (i == 2 && !isWinner) returnValue = ' ';
         }
         return returnValue;
     }
