@@ -7,13 +7,14 @@ public class Main {
     final static Scanner keyboard = new Scanner(System.in);
 
     public static void main(String[] args) throws InterruptedException {
-        GameSetup setup = new GameSetup();
         Messages.displayHeader();
+
+        GameSetup setup = new GameSetup();
         setup.run(keyboard);
         Player player = setup.getCurrentPlayer();
         Opponent opponent = setup.getCurrentOpponent();
-        Board board = new Board();
-        boolean isAWinner = false;
+        Board board = setup.getCurrentBoard();
+        boolean isThereAWinner = false;
 
         Messages.displayInfoMessage(player.getPlayersSign());
 
@@ -21,12 +22,12 @@ public class Main {
         board.boardDrawer(board.getFullBoard());
         }
 
-        while (!isAWinner) {
+        while (!isThereAWinner) {
             while (player.isPlayersTurn()) {
                 Messages.displayWhereToPlaceNextPlayerSign(player);
 
                 InputHandler inputHandler = new InputHandler(keyboard.nextLine().toLowerCase());
-                if (!inputHandler.checkRawInput()) continue;
+                if (!inputHandler.checkRawInput(board.getSize())) continue;
 
                 if (board.isThisFieldPopulated(inputHandler.getRowData(), inputHandler.getColData())) {
                     Messages.displayPopulatedFieldErrorMessage();
@@ -36,13 +37,13 @@ public class Main {
                     toggleBothPlayersTurn(player, opponent);
                     board.boardDrawer(board.getFullBoard());
 
-                    isAWinner = checkWhatPhaseComesNextAfterPlayersMove(board, player);
+                    isThereAWinner = checkWhatPhaseComesNextAfterPlayersMove(board, player);
                 }
             }
-            while (opponent.isOpponentTurn() && !isAWinner) {
+            while (opponent.isOpponentTurn() && !isThereAWinner) {
                 if (board.isBoardFull()) break;
                 board.boardDrawer(opponent.nextMove(board, player, opponent));
-                isAWinner = checkIfOpponentsWon(board, opponent);
+                isThereAWinner = checkIfOpponentsWon(board, opponent);
                 toggleBothPlayersTurn(player, opponent);
             }
 

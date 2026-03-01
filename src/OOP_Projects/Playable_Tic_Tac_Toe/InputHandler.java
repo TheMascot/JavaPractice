@@ -18,9 +18,13 @@ public class InputHandler {
         return colData;
     }
 
-    public boolean checkRawInput(){
-        String validRow = "123";
-        String validCol = "abc";
+    public boolean checkRawInput(int boardSize){
+        String possibleRows = "12345";
+        String possibleCols = "abcde";
+
+        String validRow = possibleRows.substring(0, boardSize);
+        String validCol = possibleCols.substring(0, boardSize);
+
         String[] temp = this.rawInput.split("");
 
         if(validRow.contains(temp[0]) && validCol.contains(temp[1])){
@@ -49,6 +53,8 @@ public class InputHandler {
             case "a" -> 0;
             case "b" -> 1;
             case "c" -> 2;
+            case "d" -> 3;
+            case "e" -> 4;
             default -> colIndex;
         };
         this.rowData = rowIndex;

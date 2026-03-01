@@ -4,17 +4,24 @@ import java.util.Arrays;
 
 public class Board {
 
-    private final int SIZE = 3;
+    private int size = 0;
     private char[][] board;
 
-    public Board() {
-        board = new char[SIZE][SIZE];
+    public Board(){};
+
+    public Board(int size) {
+        this.size = size;
+        board = new char[this.size][this.size];
         initializeBoard();
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public char[][] getFullBoard() {
-        char[][] copy = new char[SIZE][SIZE];
-        for (int i = 0; i < SIZE; i++) {
+        char[][] copy = new char[size][size];
+        for (int i = 0; i < size; i++) {
             copy[i] = board[i].clone();
         }
         return copy;
@@ -34,20 +41,27 @@ public class Board {
     }
 
     private void initializeBoard() {
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < size; i++) {
             Arrays.fill(board[i], ' ');
         }
     }
 
     public void boardDrawer(char[][] board) {
         StringBuilder currentBoard = new StringBuilder();
-        currentBoard.append("  A B C \n");
+        String[] colDesignators = {"A ","B ","C ","D ","E "};
+        currentBoard.append("  ");
+        for (int i = 0; i < this.size; i++) {
+            currentBoard.append(colDesignators[i]);
+        }
+        currentBoard.append("\n");
 
-        for (int i = 0; i < SIZE; i++) {
+//        currentBoard.append("  A B C \n");
+
+        for (int i = 0; i < size; i++) {
             currentBoard.append(i + 1).append("|");
-            for (int j = 0; j < SIZE; j++) {
+            for (int j = 0; j < size; j++) {
                 currentBoard.append(board[i][j]).append("|");
-                if (j == 2) currentBoard.append("\n");
+                if (j == size-1) currentBoard.append("\n");
             }
         }
         System.out.println(currentBoard);
@@ -55,7 +69,7 @@ public class Board {
 
     public char winChecker(char[][] board) {
 
-        int winCondition = SIZE;
+        int winCondition = size;
         int rowCounter;
         int colCounter;
         int leftDiagonalCounter = 0;
@@ -63,11 +77,11 @@ public class Board {
         boolean isWinner = false;
         char returnValue = ' ';
 
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < size; i++) {
             rowCounter = 0;
             colCounter = 0;
 
-            for (int j = 0; j < SIZE; j++) {
+            for (int j = 0; j < size; j++) {
                 if (board[i][j] == 'X') rowCounter++;
                 else if (board[i][j] == 'O') rowCounter--;
 
@@ -78,7 +92,7 @@ public class Board {
                     if (board[i][j] == 'X') leftDiagonalCounter++;
                     else if (board[i][j] == 'O') leftDiagonalCounter--;
                 }
-                if (i + j == 2) {
+                if (i + j == this.size-1) {
                     if (board[i][j] == 'X') rightDiagonalCounter++;
                     else if (board[i][j] == 'O') rightDiagonalCounter--;
                 }

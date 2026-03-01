@@ -39,8 +39,8 @@ public class Opponent {
         Random r = new Random();
 
         while (!validSpot) {
-            int randomRow = r.nextInt(3);
-            int randomCol = r.nextInt(3);
+            int randomRow = r.nextInt(board.getSize());
+            int randomCol = r.nextInt(board.getSize());
 
             if (board.getOneBoardField(randomRow, randomCol) == ' ') {
                 board.setOneBoardField(randomRow, randomCol, player, opponent);
