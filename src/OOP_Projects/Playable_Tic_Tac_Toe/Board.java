@@ -55,8 +55,6 @@ public class Board {
         }
         currentBoard.append("\n");
 
-//        currentBoard.append("  A B C \n");
-
         for (int i = 0; i < size; i++) {
             currentBoard.append(i + 1).append("|");
             for (int j = 0; j < size; j++) {
