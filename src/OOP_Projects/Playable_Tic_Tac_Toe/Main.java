@@ -13,6 +13,7 @@ public class Main {
         Opponent opponent = new Opponent(player);
         boolean isAWinner = false;
 
+
         Messages.displayWelcomeMessage();
 
         board.boardDrawer(board.getFullBoard());

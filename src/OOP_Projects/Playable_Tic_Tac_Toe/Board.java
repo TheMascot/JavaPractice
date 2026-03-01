@@ -44,9 +44,9 @@ public class Board {
         StringBuilder currentBoard = new StringBuilder();
         currentBoard.append("  A B C \n");
 
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 0; i < SIZE; i++) {
             currentBoard.append(i + 1).append("|");
-            for (int j = 0; j < board[i].length; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 currentBoard.append(board[i][j]).append("|");
                 if (j == 2) currentBoard.append("\n");
             }
@@ -64,11 +64,11 @@ public class Board {
         boolean isWinner = false;
         char returnValue = ' ';
 
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 0; i < SIZE; i++) {
             rowCounter = 0;
             colCounter = 0;
 
-            for (int j = 0; j < board[i].length; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (board[i][j] == 'X') rowCounter++;
                 else if (board[i][j] == 'O') rowCounter--;
 
