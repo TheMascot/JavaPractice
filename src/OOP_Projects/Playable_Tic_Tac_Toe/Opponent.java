@@ -33,7 +33,7 @@ public class Opponent {
         if (playerSign == 'X') this.opponentTurn = false;
         else if (playerSign == 'O') this.opponentTurn = true;
     }
-    public char[][] opponentsMove(Board board, Player player, Opponent opponent) {
+    public char[][] nextMove(Board board, Player player, Opponent opponent) {
 
         boolean validSpot = false;
         Random r = new Random();

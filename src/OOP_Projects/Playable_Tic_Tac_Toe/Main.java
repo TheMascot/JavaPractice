@@ -6,26 +6,27 @@ public class Main {
 
     final static Scanner keyboard = new Scanner(System.in);
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
+        GameSetup setup = new GameSetup();
+        Messages.displayHeader();
+        setup.run(keyboard);
+        Player player = setup.getCurrentPlayer();
+        Opponent opponent = setup.getCurrentOpponent();
         Board board = new Board();
-        Player player = new Player('X');
-        Opponent opponent = new Opponent(player);
         boolean isAWinner = false;
 
+        Messages.displayInfoMessage(player.getPlayersSign());
 
-        Messages.displayWelcomeMessage();
-
+        if(player.isPlayersTurn()){
         board.boardDrawer(board.getFullBoard());
+        }
 
         while (!isAWinner) {
-
-            Messages.displayWhereToPlaceNextPlayerSign(player);
-
-            InputHandler inputHandler = new InputHandler(keyboard.nextLine().toLowerCase());
-            if (!inputHandler.checkRawInput()) continue;
-
             while (player.isPlayersTurn()) {
+                Messages.displayWhereToPlaceNextPlayerSign(player);
+
+                InputHandler inputHandler = new InputHandler(keyboard.nextLine().toLowerCase());
+                if (!inputHandler.checkRawInput()) continue;
 
                 if (board.isThisFieldPopulated(inputHandler.getRowData(), inputHandler.getColData())) {
                     Messages.displayPopulatedFieldErrorMessage();
@@ -40,7 +41,7 @@ public class Main {
             }
             while (opponent.isOpponentTurn() && !isAWinner) {
                 if (board.isBoardFull()) break;
-                board.boardDrawer(opponent.opponentsMove(board, player, opponent));
+                board.boardDrawer(opponent.nextMove(board, player, opponent));
                 isAWinner = checkIfOpponentsWon(board, opponent);
                 toggleBothPlayersTurn(player, opponent);
             }
@@ -72,7 +73,6 @@ public class Main {
         if (board.winChecker(board.getFullBoard()) == opponent.getOpponentSign()) {
             Messages.displayOpponentWon();
             return true;
-        }
-        else return false;
+        } else return false;
     }
 }

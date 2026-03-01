@@ -18,7 +18,6 @@ public class Board {
             copy[i] = board[i].clone();
         }
         return copy;
-//        return this.board;
     }
 
     public char getOneBoardField(int row, int col){
