@@ -37,14 +37,24 @@ public class GameSetup {
         } while (!validateInputChar(this.playerChar));
         do {
             Messages.displayBoardSizeChoice();
-            initialBoardSizeSetup(keyboard.nextInt());
+            if (keyboard.hasNextInt()) {
+                initialBoardSizeSetup(keyboard.nextInt());
+            }
+            keyboard.nextLine();
         } while (!validateInputBoardSize(board.getSize()));
         do {
             Messages.displayDifficultyChoice();
-            initialDifficultyNumberSetup(keyboard.nextInt());
-            initialOpponentSetup(this.difficultyNumber);
+            if (keyboard.hasNextInt()) {
+                initialDifficultyNumberSetup(keyboard.nextInt());
+                initialOpponentSetup(this.difficultyNumber);
+            }
+            keyboard.nextLine();
         } while (!validateInputDifficulty(this.difficultyNumber));
-        keyboard.nextLine();
+    }
+
+    private void initialPlayerSetup(char input) {
+        this.playerChar = input;
+        player = new Player(this.playerChar);
     }
 
     private boolean validateInputChar(char input) {
@@ -55,9 +65,20 @@ public class GameSetup {
         }
     }
 
-    private void initialPlayerSetup(char input) {
-        this.playerChar = input;
-        player = new Player(this.playerChar);
+    private void initialBoardSizeSetup(int input) {
+        board = new Board(input);
+    }
+
+    private boolean validateInputBoardSize(int input) {
+        if (input >= 3 && input <= 5) return true;
+        else {
+            Messages.displayIncorrectBoardSizerErrorMessage();
+            return false;
+        }
+    }
+
+    private void initialDifficultyNumberSetup(int input) {
+        this.difficultyNumber = input;
     }
 
     private void initialOpponentSetup(int difficultyNumber) {
@@ -70,22 +91,6 @@ public class GameSetup {
         opponent = new Opponent(player, difficulty);
     }
 
-    private void initialBoardSizeSetup(int input) {
-        board = new Board(input);
-    }
-
-    private void initialDifficultyNumberSetup(int input) {
-        this.difficultyNumber = input;
-    }
-
-    private boolean validateInputBoardSize(int input) {
-        if (input >= 3 && input <= 5) return true;
-        else {
-            Messages.displayIncorrectBoardSizerErrorMessage();
-            return false;
-        }
-    }
-
     private boolean validateInputDifficulty(int input) {
         if (input >= 1 && input <= 3) return true;
         else {
@@ -93,5 +98,6 @@ public class GameSetup {
             return false;
         }
     }
+
 
 }

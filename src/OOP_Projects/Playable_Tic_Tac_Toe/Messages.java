@@ -33,9 +33,10 @@ public class Messages {
     }
 
     public static void displayDifficultyChoice() {
-        System.out.println("* Milyen nehéz              *\n" +
-                "* legyen a játék?           *\n" +
-                "* 1-könnyű 2-közepes 3-nehéz*");
+        System.out.println("""
+                * Milyen nehéz              *
+                * legyen a játék?           *
+                * 1-könnyű 2-közepes 3-nehéz*""");
         System.out.print("*");
     }
 

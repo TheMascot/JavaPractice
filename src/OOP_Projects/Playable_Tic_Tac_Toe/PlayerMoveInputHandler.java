@@ -2,8 +2,6 @@ package OOP_Projects.Playable_Tic_Tac_Toe;
 
 public class PlayerMoveInputHandler {
 
-    //TODO rename this to NextMoveInputHandler
-
     private final String rawInput;
     private int rowData = 0;
     private int colData = 0;

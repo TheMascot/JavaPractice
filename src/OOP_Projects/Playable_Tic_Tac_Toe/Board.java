@@ -7,7 +7,7 @@ public class Board {
     private int size = 0;
     private char[][] board;
 
-    public Board(){};
+    public Board(){}
 
     public Board(int size) {
         this.size = size;
@@ -28,8 +28,7 @@ public class Board {
     }
 
     public char getOneBoardField(int row, int col){
-        char temp = getFullBoard()[row][col];
-        return temp;
+        return getFullBoard()[row][col];
     }
     public void setOneBoardField(int row, int col, Player player, Opponent opponent){
        this.board[row][col] = player.isPlayersTurn() ? player.getPlayersSign() : opponent.getOpponentSign();

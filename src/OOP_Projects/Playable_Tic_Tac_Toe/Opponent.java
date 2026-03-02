@@ -2,8 +2,6 @@ package OOP_Projects.Playable_Tic_Tac_Toe;
 
 import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.Difficulty;
 
-import java.util.Random;
-
 public class Opponent {
 
     private char opponentSign;
