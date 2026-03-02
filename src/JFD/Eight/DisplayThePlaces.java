@@ -1,4 +1,4 @@
-package JFD;
+package JFD.Eight;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ public class DisplayThePlaces {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        Scanner disc = new Scanner(new File("src/JFD/Places.txt"));
+        Scanner disc = new Scanner(new File("src/JFD/Eight/Places.txt"));
         Scanner keyboard = new Scanner(System.in);
         int userInputCost;
         for (int place = 1; place <= 3; place++) {

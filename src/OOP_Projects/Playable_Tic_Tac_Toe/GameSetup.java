@@ -98,6 +98,4 @@ public class GameSetup {
             return false;
         }
     }
-
-
 }
