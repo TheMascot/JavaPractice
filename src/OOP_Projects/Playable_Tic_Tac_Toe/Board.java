@@ -35,7 +35,7 @@ public class Board {
        this.board[row][col] = player.isPlayersTurn() ? player.getPlayersSign() : opponent.getOpponentSign();
     }
 
-    public boolean isThisFieldPopulated(int row, int col) {
+    public boolean isThisBoardFieldPopulated(int row, int col) {
         if(getOneBoardField(row, col) != ' ') return true;
         else return false;
     }

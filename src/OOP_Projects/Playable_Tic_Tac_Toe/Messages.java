@@ -32,6 +32,13 @@ public class Messages {
         System.out.print("*");
     }
 
+    public static void displayDifficultyChoice() {
+        System.out.println("* Milyen nehéz              *\n" +
+                "* legyen a játék?           *\n" +
+                "* 1-könnyű 2-közepes 3-nehéz*");
+        System.out.print("*");
+    }
+
     public static void displayWhereToPlaceNextPlayerSign(Player player) {
         System.out.println("Hová kerüljön a következő " + player.getPlayersSign() + "?");
     }
@@ -42,6 +49,9 @@ public class Messages {
 
     public static void displayIncorrectPlayerCharErrorMessage() {
         System.out.println("* Nem megfelelő input. (X/O)*");
+    }
+    public static void displayIncorrectDifficultyErrorMessage() {
+        System.out.println("* Nem megfelelő input. (1-3)*");
     }
 
     public static void displayIncorrectBoardSizerErrorMessage() {

@@ -1,14 +1,16 @@
 package OOP_Projects.Playable_Tic_Tac_Toe;
 
-import org.w3c.dom.ls.LSOutput;
+import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.Difficulty;
+import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.EasyDifficulty;
+import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.HardDifficulty;
+import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.MediumDifficulty;
 
 import java.util.Scanner;
 
 public class GameSetup {
 
     private char playerChar;
-    private int boardSize;
-//   private int difficulty;
+    private int difficultyNumber;
 
     Player player;
     Opponent opponent;
@@ -30,13 +32,18 @@ public class GameSetup {
     public void run(Scanner keyboard) {
         do {
             Messages.displayPlayerSignChoice();
-            initialPlayerCharSetup(keyboard.next().toUpperCase().charAt(0));
+            initialPlayerSetup(keyboard.next().toUpperCase().charAt(0));
             keyboard.nextLine();
         } while (!validateInputChar(this.playerChar));
         do {
             Messages.displayBoardSizeChoice();
             initialBoardSizeSetup(keyboard.nextInt());
         } while (!validateInputBoardSize(board.getSize()));
+        do {
+            Messages.displayDifficultyChoice();
+            initialDifficultyNumberSetup(keyboard.nextInt());
+            initialOpponentSetup(this.difficultyNumber);
+        } while (!validateInputDifficulty(this.difficultyNumber));
         keyboard.nextLine();
     }
 
@@ -48,21 +55,41 @@ public class GameSetup {
         }
     }
 
-    private void initialPlayerCharSetup(char input) {
+    private void initialPlayerSetup(char input) {
         this.playerChar = input;
         player = new Player(this.playerChar);
-        opponent = new Opponent(player);
+    }
+
+    private void initialOpponentSetup(int difficultyNumber) {
+        Difficulty difficulty = switch (difficultyNumber) {
+            case 1 -> new EasyDifficulty();
+            case 2 -> new MediumDifficulty();
+            case 3 -> new HardDifficulty();
+            default -> new EasyDifficulty();
+        };
+        opponent = new Opponent(player, difficulty);
     }
 
     private void initialBoardSizeSetup(int input) {
         board = new Board(input);
-        System.out.println("Board size: " + input);
+    }
+
+    private void initialDifficultyNumberSetup(int input) {
+        this.difficultyNumber = input;
     }
 
     private boolean validateInputBoardSize(int input) {
         if (input >= 3 && input <= 5) return true;
         else {
             Messages.displayIncorrectBoardSizerErrorMessage();
+            return false;
+        }
+    }
+
+    private boolean validateInputDifficulty(int input) {
+        if (input >= 1 && input <= 3) return true;
+        else {
+            Messages.displayIncorrectDifficultyErrorMessage();
             return false;
         }
     }

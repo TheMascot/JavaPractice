@@ -26,14 +26,14 @@ public class Main {
             while (player.isPlayersTurn()) {
                 Messages.displayWhereToPlaceNextPlayerSign(player);
 
-                InputHandler inputHandler = new InputHandler(keyboard.nextLine().toLowerCase());
-                if (!inputHandler.checkRawInput(board.getSize())) continue;
+                PlayerMoveInputHandler playerMoveInputHandler = new PlayerMoveInputHandler(keyboard.nextLine().toLowerCase());
+                if (!playerMoveInputHandler.checkRawInput(board.getSize())) continue;
 
-                if (board.isThisFieldPopulated(inputHandler.getRowData(), inputHandler.getColData())) {
+                if (board.isThisBoardFieldPopulated(playerMoveInputHandler.getRowData(), playerMoveInputHandler.getColData())) {
                     Messages.displayPopulatedFieldErrorMessage();
                     break;
                 } else {
-                    board.setOneBoardField(inputHandler.getRowData(), inputHandler.getColData(), player, opponent);
+                    board.setOneBoardField(playerMoveInputHandler.getRowData(), playerMoveInputHandler.getColData(), player, opponent);
                     toggleBothPlayersTurn(player, opponent);
                     board.boardDrawer(board.getFullBoard());
 
@@ -42,7 +42,7 @@ public class Main {
             }
             while (opponent.isOpponentTurn() && !isThereAWinner) {
                 if (board.isBoardFull()) break;
-                board.boardDrawer(opponent.nextMove(board, player, opponent));
+                board.boardDrawer(opponent.makeMove(board, player, opponent));
                 isThereAWinner = checkIfOpponentsWon(board, opponent);
                 toggleBothPlayersTurn(player, opponent);
             }

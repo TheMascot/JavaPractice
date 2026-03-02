@@ -1,15 +1,19 @@
 package OOP_Projects.Playable_Tic_Tac_Toe;
 
+import OOP_Projects.Playable_Tic_Tac_Toe.OpponentStrategies.Difficulty;
+
 import java.util.Random;
 
 public class Opponent {
 
-    char opponentSign;
-    boolean opponentTurn;
+    private char opponentSign;
+    private boolean opponentTurn;
+    private Difficulty difficulty;
 
-    public Opponent(Player player) {
+    public Opponent(Player player, Difficulty difficulty) {
         setOpponentSign(player.getPlayersSign());
         setOpponentTurn(player.getPlayersSign());
+        setDifficulty(difficulty);
     }
 
     public char getOpponentSign() {
@@ -19,6 +23,10 @@ public class Opponent {
     public void setOpponentSign(char playerSign) {
         if (playerSign == 'X') this.opponentSign = 'O';
         else if(playerSign == 'O') this.opponentSign = 'X';
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public boolean isOpponentTurn() {
@@ -33,20 +41,7 @@ public class Opponent {
         if (playerSign == 'X') this.opponentTurn = false;
         else if (playerSign == 'O') this.opponentTurn = true;
     }
-    public char[][] nextMove(Board board, Player player, Opponent opponent) {
-
-        boolean validSpot = false;
-        Random r = new Random();
-
-        while (!validSpot) {
-            int randomRow = r.nextInt(board.getSize());
-            int randomCol = r.nextInt(board.getSize());
-
-            if (board.getOneBoardField(randomRow, randomCol) == ' ') {
-                board.setOneBoardField(randomRow, randomCol, player, opponent);
-                validSpot = true;
-            }
-        }
-        return board.getFullBoard();
+    public char[][] makeMove(Board board, Player player, Opponent opponent) {
+       return difficulty.nextMove(board, player, opponent);
     }
 }

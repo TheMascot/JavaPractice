@@ -1,6 +1,6 @@
 package OOP_Projects.Playable_Tic_Tac_Toe;
 
-public class InputHandler {
+public class PlayerMoveInputHandler {
 
     //TODO rename this to NextMoveInputHandler
 
@@ -8,7 +8,7 @@ public class InputHandler {
     private int rowData = 0;
     private int colData = 0;
 
-    public InputHandler(String userInput) {
+    public PlayerMoveInputHandler(String userInput) {
         this.rawInput = userInput.trim().replaceAll(" ", "");
     }
 
