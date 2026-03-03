@@ -14,7 +14,7 @@ public class GameSetup {
 
     Player player;
     Opponent opponent;
-    Board board = new Board();
+    Board board;
 
 
     public Board getCurrentBoard() {
