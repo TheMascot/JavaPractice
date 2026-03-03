@@ -1,5 +1,7 @@
 package JFD.Eight;
 
+import java.sql.SQLOutput;
+
 public class PlaceToLive {
 
     String address;
@@ -31,9 +33,11 @@ public class PlaceToLive {
     }
 
     public void displayPlace(){
+        System.out.println("PLACE TO LIVE");
         System.out.println("Address: " + this.address);
         System.out.println("Number of bedrooms: " + numberOfBedrooms);
         System.out.println("Total area: " + totalArea + " square meters");
+        System.out.println();
     }
 
 }

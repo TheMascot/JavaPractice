@@ -1,3 +1,5 @@
+package Practice_Files;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;

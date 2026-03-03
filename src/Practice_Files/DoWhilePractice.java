@@ -1,3 +1,5 @@
+package Practice_Files;
+
 import java.util.Scanner;
 
 public class DoWhilePractice {

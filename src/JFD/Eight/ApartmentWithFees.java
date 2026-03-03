@@ -1,24 +1,26 @@
 package JFD.Eight;
 
-public class Apartment extends PlaceToLive {
+public class ApartmentWithFees extends Apartment {
 
-    int monthlyRentalCost;
+    double quarterlyFees;
 
-    public int getMonthlyRentalCost() {
-        return monthlyRentalCost;
+    public double getQuarterlyFees() {
+        return quarterlyFees;
     }
 
-    public void setMonthlyRentalCost(int monthlyRentalCost) {
-        this.monthlyRentalCost = monthlyRentalCost;
+    public void setQuarterlyFees(double quarterlyFees) {
+        this.quarterlyFees = quarterlyFees;
     }
 
     @Override
     public void displayPlace(){
-        System.out.println("APARTMENT");
+        System.out.println("APARTMENT WITH FEES");
         System.out.println("Address: " + this.address);
         System.out.println("Number of bedrooms: " + numberOfBedrooms);
         System.out.println("Total area: " + totalArea + " square meters");
         System.out.println("Monthly rental cost: " + this.monthlyRentalCost);
+        System.out.println("Fees per month: " + (this.quarterlyFees / 3));
         System.out.println();
     }
+
 }
