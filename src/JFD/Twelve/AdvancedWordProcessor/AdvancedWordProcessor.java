@@ -1,4 +1,4 @@
-package JFD.Twelve;
+package JFD.Twelve.AdvancedWordProcessor;
 
 import java.io.IOException;
 import java.nio.file.Files;

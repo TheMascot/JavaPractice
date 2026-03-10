@@ -1,4 +1,4 @@
-package JFD.Twelve;
+package JFD.Twelve.AdvancedWordProcessor;
 
 public enum Commands {
     I,

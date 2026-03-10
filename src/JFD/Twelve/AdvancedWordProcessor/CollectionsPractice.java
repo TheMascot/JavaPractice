@@ -1,4 +1,4 @@
-package JFD.Twelve;
+package JFD.Twelve.AdvancedWordProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
