@@ -47,6 +47,7 @@ public class LambdaMain {
         r6.addIngredients(ingredients.getRandomIngredient());
         r6.addIngredients(ingredients.getRandomIngredient());
         r6.setCookingTime(35);
+        Recepies r7 = new Recepies(List.of("onion", "pepper", "eggs"), 20);
 
         List<Recepies> recepiesList = new ArrayList<>();
         recepiesList.add(r1);
