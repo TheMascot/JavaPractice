@@ -24,5 +24,6 @@ public class Main {
         mn.addNewLine(line1);
         System.out.println(mn);
 
+
     }
 }
