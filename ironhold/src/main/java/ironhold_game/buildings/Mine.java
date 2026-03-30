@@ -5,6 +5,10 @@ public class Mine extends ProductionBuilding{
 
    private int stoneProduction;
 
+    public Mine(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
+        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    }
+
     public int getStoneProduction() {
         return stoneProduction;
     }

@@ -5,6 +5,11 @@ public class House extends Building{
     private int maxPopulation;
     private int currentPopulation;
 
+    public House(int woodPrice, int stonePrice, int goldPrice, int maxPopulation) {
+        super(woodPrice, stonePrice, goldPrice);
+        this.maxPopulation = maxPopulation;
+    }
+
     public int getMaxPopulation() {
         return maxPopulation;
     }
@@ -25,7 +30,5 @@ public class House extends Building{
     public void build() {
         System.out.println("House is built");
     }
-
-
 
 }

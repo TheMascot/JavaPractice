@@ -5,6 +5,10 @@ public class Farm extends ProductionBuilding {
 
    private int foodProduction;
 
+    public Farm(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
+        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    }
+
     public int getFoodProduction() {
         return foodProduction;
     }

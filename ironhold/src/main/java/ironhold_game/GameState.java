@@ -9,6 +9,9 @@ public class GameState {
 
     private Map<Resources, Integer> stockpile = new HashMap<>();
 
+    public GameState() {
+        initializeStockpile();
+    }
 
     public Map<Resources, Integer> getStockpile() {
         return stockpile;
@@ -23,13 +26,6 @@ public class GameState {
         stockpile.merge(resource, amount, Integer::sum);
     }
 
-    public void initializeStockpile() {
-        stockpile.put(Resources.WOOD, 20);
-        stockpile.put(Resources.FOOD, 30);
-        stockpile.put(Resources.STONE, 0);
-        stockpile.put(Resources.GOLD, 0);
-    }
-
     public String printStockpile() {
         StringBuilder sb = new StringBuilder("Current stockpile:\n");
 
@@ -40,5 +36,12 @@ public class GameState {
                     .append("\n");
         }
         return sb.toString();
+    }
+
+    private void initializeStockpile() {
+        stockpile.put(Resources.WOOD, 20);
+        stockpile.put(Resources.FOOD, 30);
+        stockpile.put(Resources.STONE, 0);
+        stockpile.put(Resources.GOLD, 0);
     }
 }

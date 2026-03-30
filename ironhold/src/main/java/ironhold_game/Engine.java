@@ -6,7 +6,6 @@ public class Engine {
 
 
 public void run(){
-    gameState.initializeStockpile();
     System.out.println(gameState.printStockpile());
 }
 

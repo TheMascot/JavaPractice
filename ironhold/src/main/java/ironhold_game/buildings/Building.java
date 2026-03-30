@@ -6,6 +6,12 @@ public abstract class Building {
     private int stonePrice;
     private int goldPrice;
 
+    public Building(int woodPrice, int stonePrice, int goldPrice) {
+        this.woodPrice = woodPrice;
+        this.stonePrice = stonePrice;
+        this.goldPrice = goldPrice;
+    }
+
     public int getWoodPrice() {
         return woodPrice;
     }
