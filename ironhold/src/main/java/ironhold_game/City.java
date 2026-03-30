@@ -1,6 +1,8 @@
-package oop_projects.ironhold;
+package ironhold_game;
 
-import oop_projects.ironhold.buildings.*;
+
+
+import ironhold_game.buildings.*;
 
 import java.util.ArrayList;
 import java.util.List;

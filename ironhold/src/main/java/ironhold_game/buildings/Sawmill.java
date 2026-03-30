@@ -1,6 +1,6 @@
-package oop_projects.ironhold.buildings;
+package ironhold_game.buildings;
 
-public class Sawmill extends ProductionBuilding{
+public class Sawmill extends ProductionBuilding {
 
     private int woodProduction;
 

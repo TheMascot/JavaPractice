@@ -1,4 +1,4 @@
-package oop_projects.ironhold;
+package ironhold_game;
 
 public class IronHold {
     static void main() {

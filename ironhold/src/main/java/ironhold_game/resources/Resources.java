@@ -1,4 +1,4 @@
-package oop_projects.ironhold.resources;
+package ironhold_game.resources;
 
 public enum Resources {
 

@@ -1,6 +1,6 @@
-package oop_projects.ironhold;
+package ironhold_game;
 
-import oop_projects.ironhold.resources.Resources;
+import ironhold_game.resources.Resources;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +24,8 @@ public class GameState {
     }
 
     public void initializeStockpile() {
-        stockpile.put(Resources.WOOD, 10);
-        stockpile.put(Resources.FOOD, 10);
+        stockpile.put(Resources.WOOD, 20);
+        stockpile.put(Resources.FOOD, 30);
         stockpile.put(Resources.STONE, 0);
         stockpile.put(Resources.GOLD, 0);
     }

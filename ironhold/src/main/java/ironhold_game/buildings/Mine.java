@@ -1,4 +1,5 @@
-package oop_projects.ironhold.buildings;
+package ironhold_game.buildings;
+
 
 public class Mine extends ProductionBuilding{
 
