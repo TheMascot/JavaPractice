@@ -1,7 +1,6 @@
 package ironhold_game;
 
 
-
 import ironhold_game.buildings.*;
 
 import java.util.ArrayList;
@@ -22,10 +21,10 @@ public class City {
     public City() {
         this.population = 10;
         this.unemployed = 10;
-
+        initializeCity();
     }
 
-    private void initializeCity(){
+    private void initializeCity() {
         this.buildHouse(new House(PassiveBuildings.HOUSE));
         this.buildWall(new Wall(DefensiveBuildings.WALL));
     }
@@ -58,15 +57,18 @@ public class City {
         return population;
     }
 
-    public void setPopulation(int population) {
-        this.population = population;
+    public void setPopulation() {
+        this.population = houseList.stream()
+                .mapToInt(House::getCurrentPopulation)
+                .sum();
     }
 
     public int getUnemployed() {
         return unemployed;
     }
 
-    public void setUnemployed(int unemployed) {
+    public void setUnemployed() {
+
         this.unemployed = unemployed;
     }
 

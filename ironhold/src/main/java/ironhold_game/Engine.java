@@ -6,6 +6,7 @@ public class Engine {
 
 
 public void run(){
+    City ironhold = new City();
     System.out.println(gameState.printStockpile());
 }
 
