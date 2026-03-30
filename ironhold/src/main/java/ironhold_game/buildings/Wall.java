@@ -4,9 +4,9 @@ public class Wall extends Building {
 
     private int defenseValue;
 
-    public Wall(int woodPrice, int stonePrice, int goldPrice, int defenseValue) {
-        super(woodPrice, stonePrice, goldPrice);
-        this.defenseValue = defenseValue;
+    public Wall(DefensiveBuildings wall) {
+        super(wall.getWoodCost(), wall.getStoneCost(), wall.getGoldCost());
+        this.defenseValue = wall.getDefenseValue();
     }
 
     public int getDefenseValue() {

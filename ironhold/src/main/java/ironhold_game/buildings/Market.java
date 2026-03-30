@@ -4,8 +4,8 @@ public class Market extends ProductionBuilding{
 
   private int goldProduction;
 
-    public Market(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
-        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    public Market(ProductionBuildings market) {
+        super(market.getWoodCost(), market.getStoneCost(), market.getGoldCost(), market.getMaxWorkerNumber());
     }
 
     public int getGoldProduction() {

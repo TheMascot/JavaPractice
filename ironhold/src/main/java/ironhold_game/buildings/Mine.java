@@ -5,8 +5,8 @@ public class Mine extends ProductionBuilding{
 
    private int stoneProduction;
 
-    public Mine(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
-        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    public Mine(ProductionBuildings mine) {
+        super(mine.getWoodCost(), mine.getStoneCost(), mine.getGoldCost(), mine.getMaxWorkerNumber());
     }
 
     public int getStoneProduction() {

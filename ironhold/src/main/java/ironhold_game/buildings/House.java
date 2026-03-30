@@ -5,7 +5,7 @@ public class House extends Building{
     private int maxPopulation;
     private int currentPopulation;
 
-    public House(AvailableBuildings availableBuildings) {
+    public House(PassiveBuildings availableBuildings) {
         super(availableBuildings.getWoodCost(), availableBuildings.getStoneCost(), availableBuildings.getGoldCost());
         this.maxPopulation = availableBuildings.getMaxPopulation();
     }

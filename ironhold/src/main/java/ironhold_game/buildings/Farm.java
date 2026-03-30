@@ -5,8 +5,8 @@ public class Farm extends ProductionBuilding {
 
    private int foodProduction;
 
-    public Farm(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
-        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    public Farm(ProductionBuildings farm) {
+        super(farm.getWoodCost(), farm.getStoneCost(), farm.getGoldCost(), farm.getMaxWorkerNumber());
     }
 
     public int getFoodProduction() {

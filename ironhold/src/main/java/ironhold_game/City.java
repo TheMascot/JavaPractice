@@ -22,7 +22,12 @@ public class City {
     public City() {
         this.population = 10;
         this.unemployed = 10;
-        this.buildHouse(new House(AvailableBuildings.HOUSE));
+
+    }
+
+    private void initializeCity(){
+        this.buildHouse(new House(PassiveBuildings.HOUSE));
+        this.buildWall(new Wall(DefensiveBuildings.WALL));
     }
 
     public void buildHouse(House house) {

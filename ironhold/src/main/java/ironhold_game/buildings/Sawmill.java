@@ -4,8 +4,8 @@ public class Sawmill extends ProductionBuilding {
 
     private int woodProduction;
 
-    public Sawmill(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
-        super(woodPrice, stonePrice, goldPrice, maxWorkerNumber);
+    public Sawmill(ProductionBuildings sawmill) {
+        super(sawmill.getWoodCost(), sawmill.getStoneCost(), sawmill.getGoldCost(), sawmill.getMaxWorkerNumber());
     }
 
     public int getWoodProduction() {
