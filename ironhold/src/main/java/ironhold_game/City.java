@@ -16,27 +16,76 @@ public class City {
     private List<Mine> mineList = new ArrayList<>();
     private List<Market> marketList = new ArrayList<>();
 
-    private void buildHouse(House house) {
+    private int population;
+    private int unemployed;
+
+    public City() {
+        this.population = 10;
+        this.unemployed = 10;
+        this.buildHouse(new House(AvailableBuildings.HOUSE));
+    }
+
+    public void buildHouse(House house) {
         houseList.add(house);
     }
 
-    private void buildWall(Wall wall) {
+    public void buildWall(Wall wall) {
         wallList.add(wall);
     }
 
-    private void buildFarm(Farm farm) {
+    public void buildFarm(Farm farm) {
         farmList.add(farm);
     }
 
-    private void buildSawmill(Sawmill sawmill) {
+    public void buildSawmill(Sawmill sawmill) {
         sawmillList.add(sawmill);
     }
 
-    private void buildMine(Mine mine) {
+    public void buildMine(Mine mine) {
         mineList.add(mine);
     }
 
-    private void buildMarket(Market market) {
+    public void buildMarket(Market market) {
         marketList.add(market);
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public int getUnemployed() {
+        return unemployed;
+    }
+
+    public void setUnemployed(int unemployed) {
+        this.unemployed = unemployed;
+    }
+
+    public List<House> getHouseList() {
+        return houseList;
+    }
+
+    public List<Wall> getWallList() {
+        return wallList;
+    }
+
+    public List<Farm> getFarmList() {
+        return farmList;
+    }
+
+    public List<Sawmill> getSawmillList() {
+        return sawmillList;
+    }
+
+    public List<Mine> getMineList() {
+        return mineList;
+    }
+
+    public List<Market> getMarketList() {
+        return marketList;
     }
 }
