@@ -8,22 +8,11 @@ import java.util.Map;
 public class GameState {
 
     private Map<Resources, Integer> stockpile = new HashMap<>();
+    private int turnCounter = 0;
+    private int inputCounter;
 
     public GameState() {
         initializeStockpile();
-    }
-
-    public Map<Resources, Integer> getStockpile() {
-        return stockpile;
-    }
-
-    public void setStockpile(Map<Resources, Integer> stockpile) {
-        this.stockpile = stockpile;
-    }
-
-    public void addResource(Resources resource, int amount) {
-        // if key not present-> initialize with amount; else sum amount with key value;
-        stockpile.merge(resource, amount, Integer::sum);
     }
 
     public String printStockpile() {
@@ -38,10 +27,35 @@ public class GameState {
         return sb.toString();
     }
 
+    public void addResource(Resources resource, int amount) {
+        // if key not present-> initialize with amount; else sum amount with key value;
+        stockpile.merge(resource, amount, Integer::sum);
+    }
+
+    public void increaseTurnCounter() {
+        this.turnCounter++;
+    }
+
     private void initializeStockpile() {
         stockpile.put(Resources.WOOD, 20);
         stockpile.put(Resources.FOOD, 30);
         stockpile.put(Resources.STONE, 0);
         stockpile.put(Resources.GOLD, 0);
+    }
+
+    public Map<Resources, Integer> getStockpile() {
+        return stockpile;
+    }
+
+    public void setStockpile(Map<Resources, Integer> stockpile) {
+        this.stockpile = stockpile;
+    }
+
+    public int getTurnCounter() {
+        return turnCounter;
+    }
+
+    public void setTurnCounter(int turnCounter) {
+        this.turnCounter = turnCounter;
     }
 }
