@@ -1,6 +1,7 @@
 import accounts.*;
 
 import java.lang.annotation.Inherited;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Engine {
@@ -16,15 +17,24 @@ public class Engine {
             String userInput = keyboard.nextLine();
             String[] userInputArray = userInput.toLowerCase().trim().split(" ");
 
+            try{
+
             switch (userInputArray[0]) {
-                case "exit" -> isRunning = false;
+                case "exit" -> {
+                    System.out.println("Goodbye!");
+                    isRunning = false;
+                }
                 case "create" -> {
-                    if (userInputArray[1].equals(AccountType.CHECKING.name())) {
-                        bank.addAccount(new CheckingAccount(userInputArray[2].substring(0, 1).toUpperCase() +
-                                userInputArray[2].substring(1)));
-                    } else {
-                        bank.addAccount(new SavingsAccount(userInputArray[2].substring(0, 1).toUpperCase() +
-                                userInputArray[2].substring(1)));
+                    String userName = userInputArray[2].substring(0, 1).toUpperCase() +
+                            userInputArray[2].substring(1);
+                    if (userInputArray[1].equals(AccountType.CHECKING.getName())) {
+                        bank.addAccount(new CheckingAccount(userName));
+                        System.out.println("Account created: " + userName + " (" + AccountType.CHECKING + ")");
+                    } else if(userInputArray[1].equals(AccountType.SAVINGS.getName())) {
+                        bank.addAccount(new SavingsAccount(userName));
+                        System.out.println("Account created: " + userName + " (" + AccountType.SAVINGS + ")");
+                    } else{
+                        throw new InputMismatchException("Account type is not valid.");
                     }
                 }
 
@@ -32,6 +42,9 @@ public class Engine {
                     for (BankAccount bankAccount : bank.getAccountList()) {
                         if (bankAccount.getOwnerName().equalsIgnoreCase(userInputArray[1])) {
                             bankAccount.deposit(Double.parseDouble(userInputArray[2]));
+                            System.out.print("Deposited " + userInputArray[2] + " to " + bankAccount.getOwnerName() + ". ");
+                            System.out.println("Balance: " + bankAccount.getBalance());
+
                         }
                     }
                 }
@@ -40,6 +53,9 @@ public class Engine {
                     for (BankAccount bankAccount : bank.getAccountList()) {
                         if (bankAccount.getOwnerName().equalsIgnoreCase(userInputArray[1])) {
                             bankAccount.withdraw(Double.parseDouble(userInputArray[2]));
+                            System.out.print("Withdrew " + userInputArray[2] + " from " + bankAccount.getOwnerName() +
+                                    ". ");
+                            System.out.println("Balance: " + bankAccount.getBalance());
                         }
                     }
                 }
@@ -47,6 +63,8 @@ public class Engine {
                     for (BankAccount bankAccount : bank.getAccountList()) {
                         if (bankAccount.getOwnerName().equalsIgnoreCase(userInputArray[1])) {
                             ((InterestBearing) bankAccount).applyInterest();
+                            System.out.print("Interest applied. ");
+                            System.out.println("New balance: " + bankAccount.getBalance());
                         }
                     }
                 }
@@ -60,6 +78,13 @@ public class Engine {
                             System.out.println(s);
                         }
                     }
+                }
+            }
+            }catch (Exception e){
+                if(!e.getMessage().isBlank()){
+                System.out.println("Some input was incorrect.");
+                }else{
+                    System.out.println(e.getMessage());
                 }
             }
 
