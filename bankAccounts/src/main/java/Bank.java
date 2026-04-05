@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Bank {
 
-    List<BankAccount> accountList = new ArrayList<>();
+   private List<BankAccount> accountList = new ArrayList<>();
 
     public void addAccount(BankAccount account){
         accountList.add(account);
     }
 
-
+    public List<BankAccount> getAccountList() {
+        return accountList;
+    }
 }
