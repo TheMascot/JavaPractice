@@ -17,8 +17,7 @@ public class Mine extends ProductionBuilding{
         this.stoneProduction = stoneProduction;
     }
 
-    @Override
-    public void build() {
-        System.out.println("Mine built");
+    public static Mine build() {
+        return new Mine(ProductionBuildings.MINE);
     }
 }

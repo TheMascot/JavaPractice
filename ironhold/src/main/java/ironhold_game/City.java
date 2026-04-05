@@ -25,32 +25,20 @@ public class City {
     }
 
     private void initializeCity() {
-        this.buildHouse(new House(PassiveBuildings.HOUSE));
-        this.buildWall(new Wall(DefensiveBuildings.WALL));
+        this.houseList.add(House.build());
+        this.wallList.add(Wall.build());
     }
 
-    public void buildHouse(House house) {
-        houseList.add(house);
-    }
-
-    public void buildWall(Wall wall) {
-        wallList.add(wall);
-    }
-
-    public void buildFarm(Farm farm) {
-        farmList.add(farm);
-    }
-
-    public void buildSawmill(Sawmill sawmill) {
-        sawmillList.add(sawmill);
-    }
-
-    public void buildMine(Mine mine) {
-        mineList.add(mine);
-    }
-
-    public void buildMarket(Market market) {
-        marketList.add(market);
+    public void buildBuildingByName(String buildingName){
+        switch (buildingName){
+            case "house" -> houseList.add(House.build());
+            case "farm" -> farmList.add(Farm.build());
+            case "sawmill" -> sawmillList.add(Sawmill.build());
+            case "mine" -> mineList.add(Mine.build());
+            case "market" -> marketList.add(Market.build());
+            case "wall" -> wallList.add(Wall.build());
+            default -> System.out.println("Building name is invalid");
+        }
     }
 
     public int getPopulation() {
@@ -67,7 +55,7 @@ public class City {
         return unemployed;
     }
 
-    public void setUnemployed() {
+    public void setUnemployed(int unemployed) {
 
         this.unemployed = unemployed;
     }

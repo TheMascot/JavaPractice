@@ -5,7 +5,7 @@ public class House extends Building{
     private int maxPopulation;
     private int currentPopulation;
 
-    public House(PassiveBuildings house) {
+    private House(PassiveBuildings house) {
         super(house.getWoodCost(), house.getStoneCost(), house.getGoldCost());
         this.maxPopulation = house.getMaxPopulation();
     }
@@ -26,9 +26,8 @@ public class House extends Building{
         this.currentPopulation = currentPopulation;
     }
 
-    @Override
-    public void build() {
-        System.out.println("House is built");
+    public static House build() {
+        return new House(PassiveBuildings.HOUSE);
     }
 
 }

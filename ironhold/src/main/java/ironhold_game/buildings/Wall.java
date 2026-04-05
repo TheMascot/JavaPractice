@@ -17,8 +17,7 @@ public class Wall extends Building {
         this.defenseValue = defenseValue;
     }
 
-    @Override
-    public void build() {
-        System.out.println("Wall built");
+    public static Wall build() {
+        return new Wall(DefensiveBuildings.WALL);
     }
 }

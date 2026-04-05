@@ -3,9 +3,9 @@ package ironhold_game.buildings;
 
 public class Farm extends ProductionBuilding {
 
-   private int foodProduction;
+    private int foodProduction;
 
-    public Farm(ProductionBuildings farm) {
+    private Farm(ProductionBuildings farm) {
         super(farm.getWoodCost(), farm.getStoneCost(), farm.getGoldCost(), farm.getMaxWorkerNumber());
     }
 
@@ -17,8 +17,7 @@ public class Farm extends ProductionBuilding {
         this.foodProduction = foodProduction;
     }
 
-    @Override
-    public void build() {
-        System.out.println("Farm is built");
+    public static Farm build() {
+        return new Farm(ProductionBuildings.FARM);
     }
 }

@@ -16,8 +16,7 @@ public class Market extends ProductionBuilding{
         this.goldProduction = goldProduction;
     }
 
-    @Override
-    public void build() {
-        System.out.println("Market built");
+    public static Market build() {
+        return new Market(ProductionBuildings.MARKET);
     }
 }

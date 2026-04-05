@@ -16,8 +16,7 @@ public class Sawmill extends ProductionBuilding {
         this.woodProduction = woodProduction;
     }
 
-    @Override
-    public void build() {
-        System.out.println("Sawmill built");
+    public static Sawmill build() {
+        return new Sawmill(ProductionBuildings.SAWMILL);
     }
 }

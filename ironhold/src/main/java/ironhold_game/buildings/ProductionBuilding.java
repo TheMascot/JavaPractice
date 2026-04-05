@@ -5,7 +5,7 @@ public abstract class ProductionBuilding extends Building {
     private int maxWorkerNumber;
     private int currentWorkerNumber;
 
-    public ProductionBuilding(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
+    ProductionBuilding(int woodPrice, int stonePrice, int goldPrice, int maxWorkerNumber) {
         super(woodPrice, stonePrice, goldPrice);
         this.maxWorkerNumber = maxWorkerNumber;
     }
