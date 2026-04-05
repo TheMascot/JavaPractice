@@ -12,4 +12,8 @@ public class SavingsAccount extends BankAccount implements InterestBearing {
     public void applyInterest() {
         this.setBalance(this.getBalance() * 1.05);
     }
+
+    public String getAccountType() {
+        return accountType.toString();
+    }
 }

@@ -6,17 +6,17 @@ public abstract class BankAccount {
     private double balance;
     private AccountStatus accountStatus;
 
-    BankAccount(String name){
+    BankAccount(String name) {
         this.ownerName = name;
         this.balance = 0;
         this.accountStatus = AccountStatus.ACTIVE;
     }
 
-    public void deposit(double amount){
+    public void deposit(double amount) {
         this.balance += amount;
     }
 
-    public void withdraw(double amount){
+    public void withdraw(double amount) {
         this.balance -= amount;
     }
 
@@ -27,4 +27,15 @@ public abstract class BankAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
+    }
+
+    public abstract String getAccountType();
+
 }

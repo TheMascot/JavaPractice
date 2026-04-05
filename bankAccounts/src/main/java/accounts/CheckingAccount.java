@@ -12,4 +12,8 @@ public class CheckingAccount extends BankAccount implements InterestBearing{
     public void applyInterest() {
         this.setBalance(this.getBalance() * 1.01);
     }
+
+    public String getAccountType() {
+        return accountType.toString();
+    }
 }
